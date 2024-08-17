@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283fd36611a824cdbb1ff31da4b84fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environmentMover: {fileID: 1359339740}
+  playerMover: {fileID: 1359339740}
   groundCheck: {fileID: 398788885}
   groundLayer:
     serializedVersion: 2
