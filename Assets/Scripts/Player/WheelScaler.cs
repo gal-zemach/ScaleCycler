@@ -4,18 +4,52 @@ using UnityEngine;
 
 public class WheelScaler : MonoBehaviour
 {
-    public WheelCollider wheelCollider;    
+    public CircleCollider2D wheelCollider;
+    public Transform wheelSpriteTransform;
+
     public float scaleSpeed = 0.1f; // Speed of scaling
     public float minRadius = 2f;
     public float maxRadius = 6f;
 
     private Vector3 initialMousePosition;
     private float initialRadius;
+    private Vector3 initialSpriteScale;
     private bool isScaling;
+
+    void Start()
+    {
+        initialRadius = wheelCollider.radius;
+        initialSpriteScale = wheelSpriteTransform.localScale;
+    }
 
     void Update()
     {
-        transform.position = wheelCollider.transform.position + new Vector3(wheelCollider.radius, wheelCollider.radius, 0);
+        // transform.position = wheelCollider.transform.position + new Vector3(wheelCollider.radius, wheelCollider.radius, 0);
+        var newSpriteScale = initialSpriteScale * (wheelCollider.radius / initialRadius);
+        if (wheelSpriteTransform.localScale.x != newSpriteScale.x || wheelSpriteTransform.localScale.y != newSpriteScale.y)
+        {
+            wheelSpriteTransform.localScale = newSpriteScale;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("mouse down on dot");
+
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPosition.z = 0; // Ensure we're working in 2D
+
+            initialMousePosition = mouseWorldPosition;
+            initialRadius = wheelCollider.radius;
+            isScaling = true;
+
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("mouse up on dot");
+
+            isScaling = false;
+        }
     }
 
     void FixedUpdate()
@@ -33,24 +67,24 @@ public class WheelScaler : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
-    {
-        // Debug.Log("mouse down on dot");
+    // void OnMouseDown()
+    // {
+    //     Debug.Log("mouse down on dot");
 
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = 0; // Ensure we're working in 2D
+    //     Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     mouseWorldPosition.z = 0; // Ensure we're working in 2D
 
-        initialMousePosition = mouseWorldPosition;
-        initialRadius = wheelCollider.radius;
-        isScaling = true;
-    }
+    //     initialMousePosition = mouseWorldPosition;
+    //     initialRadius = wheelCollider.radius;
+    //     isScaling = true;
+    // }
 
-    void OnMouseUp()
-    {
-        // Debug.Log("mouse up on dot");
+    // void OnMouseUp()
+    // {
+    //     Debug.Log("mouse up on dot");
 
-        isScaling = false;
-    }
+    //     isScaling = false;
+    // }
 
     private float MaxByAbs(float a, float b)
     {
