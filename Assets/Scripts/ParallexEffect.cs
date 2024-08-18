@@ -1,58 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ParallexEffect : MonoBehaviour
+public class ParallaxEffect : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private Transform[] parallexItems;
-    [SerializeField] private float OffSetAmount;
-    [SerializeField] private float OffSetScaler = 1;
-    [SerializeField] private float _cacheXPos;
-    public float daFuck;
+    public Transform player;  // Reference to the player's transform
+    public float parallaxFactor = 0.5f;  // How much parallax to apply (0 means no movement, 1 means full movement)
 
-    private Transform _cameraTransform;
+    private Vector3 previousPlayerPosition;
 
-    void Awake()
+    void Start()
     {
-        if (mainCamera != null)
+        if (player == null)
         {
-            _cameraTransform = mainCamera.GetComponent<Transform>();
-            _cacheXPos = _cameraTransform.localPosition.x;
+            player = Camera.main.transform;  // If no player, use the main camera
         }
+
+        // Store the initial player position
+        previousPlayerPosition = player.position;
     }
 
     void Update()
     {
-        daFuck = _cameraTransform.localPosition.x;
+        // Calculate how far the player has moved since the last frame
+        float deltaX = player.position.x - previousPlayerPosition.x;
 
-        if (_cacheXPos > _cameraTransform.localPosition.x)
-        {
-            var counter = 0;
+        // Move the background at a reduced rate depending on the parallax factor
+        transform.position += new Vector3(deltaX * parallaxFactor, 0, 0);
 
-            foreach (var trn in parallexItems)
-            {
-                counter++;
-
-                trn.localPosition = new Vector3(counter * OffSetAmount * OffSetScaler, trn.localPosition.z, 0);
-            }
-
-            _cacheXPos = _cameraTransform.localPosition.x;
-        }
-        else if (_cacheXPos < _cameraTransform.localPosition.x)
-        {
-            var counter = 0;
-
-            foreach (var trn in parallexItems)
-            {
-                counter++;
-
-                trn.localPosition = new Vector3(-(counter * OffSetAmount * OffSetScaler), trn.localPosition.z, 0);
-            }
-
-            _cacheXPos = _cameraTransform.localPosition.x;
-        }
+        // Update the previous player position
+        previousPlayerPosition = player.position;
     }
 }
