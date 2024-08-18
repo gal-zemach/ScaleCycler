@@ -28,13 +28,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 position;
     private Quaternion rotation;
 
+    private float wheelInitialRadius;
+
+    void Start()
+    {
+        wheelInitialRadius = wheelCollider.radius;
+    }
+
     void Update()
     {
-        // Get the Wheel collider's world pose values and
-        // use them to set the wheel model's position and rotation
-        wheelCollider.GetWorldPose(out position, out rotation);
-        wheelSpriteTransform.position = position;
-        wheelSpriteTransform.rotation = rotation;
+        UpdateWheelSprite();
     }
 
     void FixedUpdate()
@@ -86,5 +89,15 @@ public class PlayerController : MonoBehaviour
     {
         // Check if the player is touching the ground
         isGrounded = Physics.OverlapSphere(groundCheck.position, 0.1f, groundLayer)?.Length > 0;
+    }
+
+    private void UpdateWheelSprite()
+    {
+        wheelCollider.GetWorldPose(out position, out rotation);
+        wheelSpriteTransform.position = position;
+        wheelSpriteTransform.rotation = rotation;
+
+        float wheelRadiusScale = wheelCollider.radius / wheelInitialRadius;
+        wheelSpriteTransform.localScale = Vector3.one * wheelRadiusScale;
     }
 }
