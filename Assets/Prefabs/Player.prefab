@@ -855,6 +855,7 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   maxTiltAngle: 45
+  characterManager: {fileID: 0}
 --- !u!50 &4961700787436189505
 Rigidbody2D:
   serializedVersion: 4
