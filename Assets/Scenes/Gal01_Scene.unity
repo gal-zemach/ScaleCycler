@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbe7d7e1a33e40be8245edbceaff4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 0}
   charactersBySize:
   - Prefab: {fileID: 0}
     PositionOffset: {x: 0, y: 0, z: 0}
@@ -450,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dcb3ade939747a19c80372c40f9085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 246063911}
+  player: {fileID: 0}
   smoothTime: 0.7
 --- !u!4 &541987692 stripped
 Transform:
@@ -1099,6 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbe7d7e1a33e40be8245edbceaff4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 519420033}
   charactersBySize:
   - Prefab: {fileID: 6130750036594954301, guid: 56496147a933a48798ab06e63d7aa13b, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}

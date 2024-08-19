@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+    public CameraFollow cameraFollow;
+    
+    [Space]
     public List<CharacterWithPos> charactersBySize;
     public int initialCharacterIndex;
     
@@ -50,6 +53,8 @@ public class CharacterManager : MonoBehaviour
         currentCharacterGameobject.transform.GetChild(0).position = characterPos + charactersBySize[currentCharacter].PositionOffset;
         var controller = currentCharacterGameobject.transform.GetChild(0).GetComponent<UnicycleController>();
         InitNewCharacter(controller);
+
+        cameraFollow.player = currentCharacterGameobject.transform.GetChild(0).transform;
 
         lastCharacter = currentCharacter;
     }

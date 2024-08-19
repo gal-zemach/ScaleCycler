@@ -15,6 +15,11 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        if (player == null)
+        {
+            return;
+        }
+        
         // Calculate the target position for the camera (fixed y position)
         Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, transform.position.z);
 
