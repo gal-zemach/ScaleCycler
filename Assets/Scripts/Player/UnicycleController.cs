@@ -32,6 +32,10 @@ public class UnicycleController : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public float maxTiltAngle = 45f; // Max angle to allow jumps and auto-correct
 
+    [Space]
+    [Header("Character Change Parameters")]
+    public CharacterManager characterManager;
+
     private float lastMoveInput = 0f;
     private bool isGrounded;
 
@@ -157,12 +161,11 @@ public class UnicycleController : MonoBehaviour
 
     private void UpdateSize()
     {
-        float changeSizeInput = Input.GetAxis("Vertical");
-        if (changeSizeInput > 0)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             IncreaseSize();
         }
-        else if (changeSizeInput < 0)
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             DecreaseSize();
         }
@@ -170,11 +173,13 @@ public class UnicycleController : MonoBehaviour
 
     private void IncreaseSize()
     {
-        Debug.Log("increasing unicycle size");
+        // Debug.Log("Increasing size");
+        characterManager.IncreaseSize();
     }
 
     private void DecreaseSize()
     {
-        Debug.Log("decreasing unicycle size");
+        // Debug.Log("Decreasing size");
+        characterManager.DecreaseSize();
     }
 }
