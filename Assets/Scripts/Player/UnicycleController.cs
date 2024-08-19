@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class UnicycleController : MonoBehaviour
@@ -22,6 +23,7 @@ public class UnicycleController : MonoBehaviour
 
     [Space]
     [Header("Jump Parameters")]
+    public bool shouldEnableJump = false;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float gravityScale = 5f;
@@ -116,25 +118,36 @@ public class UnicycleController : MonoBehaviour
 
     private void UpdateJump()
     {
+        if (!shouldEnableJump)
+        {
+            return;
+        }
+        
         CheckGrounded();
 
         // Restrict jumping if the body is too tilted
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && Mathf.Abs(bodyRb.rotation) < maxTiltAngle)
         {
-            bodyRb.velocity += Vector2.up * jumpForce;
-            wheelRb.velocity += Vector2.up * jumpForce;
+            Action<Rigidbody2D> jumpAction = rb => rb.velocity += Vector2.up * jumpForce;
+            ApplyToBothRigidBodies(jumpAction);
         }
 
         if (bodyRb.velocity.y < 0)
         {
-            bodyRb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            wheelRb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            Action<Rigidbody2D> jumpActionOnFall = rb => rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            ApplyToBothRigidBodies(jumpActionOnFall);
         }
         else if (bodyRb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            bodyRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            wheelRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            Action<Rigidbody2D> jumpActionOnShortJump = rb => rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            ApplyToBothRigidBodies(jumpActionOnShortJump);
         }
+    }
+
+    private void ApplyToBothRigidBodies(Action<Rigidbody2D> action)
+    {
+        action?.Invoke(bodyRb);
+        action?.Invoke(wheelRb);
     }
 
     private void CheckGrounded()
