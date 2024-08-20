@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public GameObject startScreen;
     public GameObject gameStarter;
 
+    void Awake()
+    {
+        startScreen.SetActive(true);
+        gameStarter.SetActive(false);
+    }
+
     public void StartGame()
     {
         startScreen.SetActive(false);
