@@ -1168,7 +1168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gravityScale: 5
-  jumpForce: 30
+  jumpForce: 17
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   maxTiltAngle: 45
