@@ -46500,6 +46500,7 @@ GameObject:
   - component: {fileID: 1644099466}
   - component: {fileID: 1644099468}
   - component: {fileID: 1644099467}
+  - component: {fileID: 1644099469}
   m_Layer: 5
   m_Name: GameLogo
   m_TagString: Untagged
@@ -46523,7 +46524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35517463, y: 0.432}
   m_AnchorMax: {x: 0.64452386, y: 0.8866498}
-  m_AnchoredPosition: {x: 0, y: 0.26799774}
+  m_AnchoredPosition: {x: 0, y: 0.26800537}
   m_SizeDelta: {x: 0.3959961, y: -1.5579987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644099467
@@ -46564,6 +46565,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644099465}
   m_CullTransparentMesh: 1
+--- !u!114 &1644099469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644099465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.1496529, g: 0.3176602, b: 0.5566038, a: 1}
+  m_EffectDistance: {x: 1, y: -8.23}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1644419521
 GameObject:
   m_ObjectHideFlags: 0
@@ -52922,6 +52938,7 @@ GameObject:
   - component: {fileID: 1860086919}
   - component: {fileID: 1860086921}
   - component: {fileID: 1860086920}
+  - component: {fileID: 1860086922}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -52986,6 +53003,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860086918}
   m_CullTransparentMesh: 1
+--- !u!114 &1860086922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860086918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.11992702, g: 0.3301887, b: 0.14418797, a: 1}
+  m_EffectDistance: {x: -8.16, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1861842071
 GameObject:
   m_ObjectHideFlags: 0
@@ -61532,7 +61564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.37385547, y: 0.23700002}
   m_AnchorMax: {x: 0.5976833, y: 0.43752488}
-  m_AnchoredPosition: {x: 0.04699707, y: -0.28401184}
+  m_AnchoredPosition: {x: 0.04699707, y: -0.2840271}
   m_SizeDelta: {x: -35.57, y: 36.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130036837
