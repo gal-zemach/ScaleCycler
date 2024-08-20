@@ -7,6 +7,7 @@ TagManager:
   - Reward
   - Weapon
   - Enemy
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 1247413525
+    locked: 0
+  - name: Rewards
+    uniqueID: 202983323
     locked: 0
   - name: ScoreUI
     uniqueID: 1228687481
