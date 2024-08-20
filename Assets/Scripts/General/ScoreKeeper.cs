@@ -25,19 +25,6 @@ public class ScoreKeeper : MonoBehaviour
         UpdateUI();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            DecrementScore();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            IncrementScore();
-        }
-    }
-
     public void IncrementScore()
     {
         score++;
