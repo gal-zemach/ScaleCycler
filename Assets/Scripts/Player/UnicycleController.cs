@@ -173,13 +173,11 @@ public class UnicycleController : MonoBehaviour
 
     private void IncreaseSize()
     {
-        // Debug.Log("Increasing size");
         characterManager.IncreaseSize();
     }
 
     private void DecreaseSize()
     {
-        // Debug.Log("Decreasing size");
         characterManager.DecreaseSize();
     }
 }

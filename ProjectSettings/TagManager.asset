@@ -41,6 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: ScaleUI
-    uniqueID: 2909964337
+  - name: ScoreUI
+    uniqueID: 1228687481
     locked: 0
