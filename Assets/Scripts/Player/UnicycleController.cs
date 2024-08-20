@@ -25,7 +25,7 @@ public class UnicycleController : MonoBehaviour
     [Space]
     [Header("Jump Parameters")]
     public bool shouldEnableJump = false;
-    public Transform groundCheck;
+    public Transform[] groundCheck;
     public LayerMask groundLayer;
     public float gravityScale = 5f;
     public float jumpForce = 10f;
@@ -157,7 +157,16 @@ public class UnicycleController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        isGrounded = false;
+        if (groundCheck == null)
+        {
+            return;
+        }
+
+        foreach (Transform groundCheckPoint in groundCheck)
+        {
+            isGrounded = isGrounded || Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, groundLayer);
+        }
     }
 
     private void UpdateSize()

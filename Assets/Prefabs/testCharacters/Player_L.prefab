@@ -1742,7 +1742,8 @@ MonoBehaviour:
   wobbleDamping: 2
   friction: 1.5
   shouldEnableJump: 0
-  groundCheck: {fileID: 7962265899148070349}
+  groundCheck:
+  - {fileID: 7962265899148070349}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
