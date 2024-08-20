@@ -1327,25 +1327,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelRb: {fileID: 5835341766007979902}
   bodyRb: {fileID: 4961700787436189505}
-  moveSpeed: 500
-  maxAngularVelocity: 250
-  directionChangeDamping: 2
+  moveSpeed: 5
+  maxAngularVelocity: 500
   counterTorque: 100
-  balanceForce: 20
-  maxBalanceAngle: 90
+  balanceForce: 30
+  maxBalanceAngle: 15
   wobbleDamping: 2
-  friction: 1.5
   shouldEnableJump: 0
-  groundCheck:
-  - {fileID: 7962265899148070349}
+  groundCheck: {fileID: 7962265899148070349}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  gravityScale: 5
   jumpForce: 30
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  maxTiltAngle: 45
+  gravityScale: 5
   characterManager: {fileID: 0}
 --- !u!50 &4961700787436189505
 Rigidbody2D:
